@@ -2,17 +2,21 @@ package blck;
 
 public class Singleton {
 
-    private static Singleton INSTANCE; // lazy init
+    private static volatile Singleton INSTANCE; // lazy init
 
     private Singleton() {
         if (INSTANCE != null) {
             throw new RuntimeException();
-         }
+        }
     }
 
     public static Singleton getInstance() {
         if (INSTANCE == null) {
-            INSTANCE = new Singleton();
+            synchronized (Singleton.class) {
+                if (INSTANCE == null) {
+                    INSTANCE = new Singleton();
+                }
+            }
         }
         return INSTANCE;
     }
