@@ -1,0 +1,10 @@
+.gradle
+.idea
+build
+gradle
+src/test
+src/main/resources
+build.gradle
+gradlew
+gradlew.bat
+settings.gradle
